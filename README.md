@@ -27,7 +27,7 @@ This project has two parts: backend(go1.14) and frontend (angular10).
 1. `docker-compose up -d` 
 2. For test backend you must create cli client command `make client` in backend/history and backend/calculator
 3. Checking: `./client add 4 6`  must return  `Response result:10` and `./client all` -> `Response result for get all:[id:"54760c28-d5cd-4c5b-a3a7-89e69fc705e2" name:"add" a:4 b:6 result:10 time:"2020-09-03 03:45:48.006184786 +0000 UTC m=+443.824024003" ]`
-4. In front/grpc-web/  directory ng serve and go to http://localhost:4200/ 
+4. In front/grpc-web/  directory `ng serve` and go to http://localhost:4200/ 
 
 ![GitHub Logo](/imgs/1.png)
 
