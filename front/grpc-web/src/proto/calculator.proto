@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package="proto";
+
+service Calculator {
+  rpc Add(Request) returns (Response) {};
+
+  rpc Sub(Request) returns (Response) {};
+}
+
+message Request {
+  int32 a = 1;
+  int32 b = 2;
+}
+
+message Response {
+  int32 result = 1;
+}

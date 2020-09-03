@@ -1,0 +1,64 @@
+<div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
+  <div *ngIf="!isHistoryPage" style="flex-direction: column; justify-content: center; margin: 50px">
+    <button style="margin: 15px" mat-raised-button (click)="toHistory()">History</button>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>A</mat-label>
+        <input matInput (keyup)="inputA($event)" value="{{a}}">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>B</mat-label>
+        <input matInput (keyup)="inputB($event)" value="{{b}}">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Operation</mat-label>
+        <mat-select [(value)]="operation">
+          <mat-option value="add">Add</mat-option>
+          <mat-option value="sub">Sub</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" style="text-align: right; font-size: 20px; ">
+        <mat-label>
+          Result:
+        </mat-label>
+        <input style="font-weight: bold; font-size: 25px; color: #23232a;"
+               matInput disabled value="{{result}}">
+      </mat-form-field>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: center">
+      <div>
+        <button mat-flat-button color="accent" (click)="getResult()">Get result</button>
+      </div>
+      <div>
+        <button style="margin: 0 0 0 5px" mat-flat-button color="warn" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isHistoryPage" style="flex-direction: column; justify-content: center; margin: 50px">
+    <button style="margin: 15px" mat-raised-button (click)="toCalculator()">Calculator</button>
+    <div *ngFor="let item of events" style="display:flex; flex-direction: row">
+      <div class="cell">ID: {{item.id}}</div>
+      <div class="cell">Name: {{item.name}}</div>
+      <div class="cell">A: {{item.a}}</div>
+      <div class="cell">B: {{item.b}}</div>
+      <div class="cell">Result: {{item.result}}</div>
+      <div class="cell">Date: {{formatDate(item.time)}}</div>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: center">
+      <div>
+        <button mat-flat-button color="accent" (click)="updateEvents()">Get all</button>
+      </div>
+      <div>
+        <button style="margin: 0 0 0 5px" mat-flat-button color="warn" (click)="clearEvents()">Clear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

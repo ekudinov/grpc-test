@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package="proto";
+
+service History {
+  rpc GetAll(HistoryRequest) returns (GetAllResponse) {};
+
+  rpc Clear(HistoryRequest) returns (ClearResponse) {};
+
+  rpc AddEvent(AddEventRequest) returns (AddEventResponse) {}
+}
+
+message HistoryRequest {
+}
+
+message AddEventRequest {
+  Event event = 1;
+}
+
+message AddEventResponse {
+  string id = 1;
+}
+
+message Event {
+  string id = 1;
+  string name = 2;
+  int32 a = 3;
+  int32 b = 4;
+  int32 result = 5;
+  string time = 6;
+}
+
+message GetAllResponse {
+  repeated Event events = 1;
+}
+
+message ClearResponse {
+  int32 count = 1;
+}

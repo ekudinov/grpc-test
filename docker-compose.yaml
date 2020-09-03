@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  calculator:
+    build:
+      context: backend
+      dockerfile: calculator/Dockerfile
+    expose:
+      - 5040
+    ports:
+    - "5040:5040"
+  history:
+    build:
+      context: backend/history
+      dockerfile: Dockerfile
+    command: ./history -grpc.addr :5041 -http.addr :5051 -debug.addr :5061
+    expose:
+      - 5041
+    ports:
+      - "5041:5041"
+  envoy:
+    image: envoyproxy/envoy-alpine:v1.13.0
+    volumes:
+      - ./etc/envoy.yaml:/etc/envoy/envoy.yaml
+    command: /usr/local/bin/envoy -c /etc/envoy/envoy.yaml -l trace --log-path /tmp/envoy_info.log
+    ports:
+      - "8080:8080"
