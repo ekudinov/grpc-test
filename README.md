@@ -4,6 +4,10 @@
 
 This project has two parts: backend(go1.14) and frontend (angular10). 
 
+## Interaction diagram
+
+![GitHub Logo](/imgs/4.png)
+
 ## Tools and technologies:
 
 1. https://github.com/go-kit/kit [GitHub](https://github.com/go-kit/kit) - programming toolkit for building microservices
